@@ -1,9 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:rider/constants/asesets.dart';
 import 'package:flutter/material.dart';
-
-import '../../common/app_colors.dart';
+import 'package:rider/constants/asesets.dart';
 
 class NetworkImageWidget extends StatelessWidget {
   const NetworkImageWidget({

@@ -6,12 +6,12 @@ import 'package:stacked_services/stacked_services.dart';
 
 import 'account_create_dialog_model.dart';
 
-const double _graphicSize = 60;
 
 class AccountCreateDialog extends StackedView<AccountCreateDialogModel> {
   final DialogRequest request;
   final Function(DialogResponse) completer;
 
+  // ignore: use_super_parameters
   const AccountCreateDialog({
     Key? key,
     required this.request,

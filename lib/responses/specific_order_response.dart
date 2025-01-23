@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters
+
 import 'package:rider/models/orders.dart';
 import 'package:rider/responses/base_responses/base_response.dart';
 

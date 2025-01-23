@@ -135,7 +135,7 @@ class IncomnigrequestDialog extends StackedView<IncomnigrequestDialogModel> {
                                       .textTheme
                                       .bodyMedium
                                       ?.copyWith(
-                                          color: kcBlackColor.withOpacity(.4)),
+                                          color: kcBlackColor),
                                 ),
                                 Text(
                                   // "\$ 5.00",
@@ -207,7 +207,7 @@ class IncomnigrequestDialog extends StackedView<IncomnigrequestDialogModel> {
                       backgroundColor: kcPrimaryColor,
                     ),
                     onPressed: () async {
-                      print(order.toJson());
+                    
                       //
                       // accept api
                       ///

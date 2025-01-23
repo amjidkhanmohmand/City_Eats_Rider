@@ -139,11 +139,6 @@ class NotificationService {
     log.d('User granted permission: ${settings.authorizationStatus}');
   }
 
-  void _onDidReceiveLocalNotification(int id, String title, String body, String payload) async {
-    ReceivedNotification receivedNotification = ReceivedNotification(
-        id: id, title: title, body: body, payload: payload);
-    didReceivedLocalNotificationSubject.add(receivedNotification);
-  }
 
   void _onNotificationClick(NotificationResponse payload) {
     log.wtf('Tapped on notification in foreground state');

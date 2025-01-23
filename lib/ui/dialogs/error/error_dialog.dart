@@ -6,12 +6,12 @@ import 'package:stacked_services/stacked_services.dart';
 
 import 'error_dialog_model.dart';
 
-const double _graphicSize = 60;
 
 class ErrorDialog extends StackedView<ErrorDialogModel> {
   final DialogRequest request;
   final Function(DialogResponse) completer;
 
+  // ignore: use_super_parameters
   const ErrorDialog({
     Key? key,
     required this.request,

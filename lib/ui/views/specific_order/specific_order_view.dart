@@ -6,14 +6,17 @@ import 'package:rider/ui/dialogs/progress_indicator/progress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rider/ui/views/my_orders/my_orders_view.dart';
+import 'package:rider/ui/views/specific_order/widgets/submodifier_list.dart';
 import 'package:stacked/stacked.dart';
 import 'specific_order_viewmodel.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class SpecificOrderView extends StackedView<SpecificOrderViewModel> {
+  // ignore: use_super_parameters
   const SpecificOrderView(
       {Key? key, required this.order, this.isRouteFromRide = false})
       : super(key: key);
+
   final OrderModel order;
   final bool isRouteFromRide;
 
@@ -339,6 +342,15 @@ class SpecificOrderView extends StackedView<SpecificOrderViewModel> {
                     ),
                   ],
                 ),
+                if (order.orderDetail?[index].modifiers!.isNotEmpty ?? false)
+                  showMoreButton(viewModel, index, context),
+                viewModel.res?.body!.orders!.orderDetail![index].showMore ??
+                        false
+                    ? SubmodifiersList(
+                        subModifers: viewModel
+                            .getProductSubmod(order.orderDetail![index]),
+                      )
+                    : SizedBox(),
                 if (order.orderDetail?[index].orderSubProducts.isNotEmpty ??
                     false) ...[
                   6.verticalSpace,
@@ -394,6 +406,39 @@ class SpecificOrderView extends StackedView<SpecificOrderViewModel> {
         ],
       ),
     );
+  }
+
+  GestureDetector showMoreButton(
+      SpecificOrderViewModel viewModel, int index, BuildContext context) {
+    return GestureDetector(
+        onTap: () {
+          viewModel.toggleShowMore(
+            index,
+          );
+        },
+        child: Wrap(
+          children: [
+            Text(
+              viewModel.res?.body!.orders!.orderDetail![index].showMore ?? false
+                  ? "View less"
+                  : " View more",
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: kcPrimaryColor,
+                    decoration: TextDecoration.underline,
+                    decorationColor: kcPrimaryColor,
+                  ),
+            ),
+            Icon(
+              viewModel.res?.body!.orders!.orderDetail![index].showMore ?? false
+                  ? Icons.keyboard_arrow_up_outlined
+                  : Icons.keyboard_arrow_down_outlined,
+              color: kcPrimaryColor,
+              size: 20.sp,
+            )
+          ],
+        ));
   }
 
   Container _deliveryAddress(
